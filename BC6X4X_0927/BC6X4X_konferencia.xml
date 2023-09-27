@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<konferencia>
+    <cim>Balek keresztelő</cim>
+    <hallgatok>
+        <hallgato>
+            <nev>Szöllősi János</nev>
+            <lakcim>3565 Tiszalúc, Hársfa u. 57</lakcim>
+        </hallgato>
+    </hallgatok>
+    <helyszin>Miskolci Egyetem</helyszin>
+    <eloado>
+        <nev>Szakestély vezető</nev>
+        <adoszam>3256987412</adoszam>
+        <lakcim>Miskolc</lakcim>
+    </eloado>
+    <datum>2023.09.27.</datum>
+</konferencia>
