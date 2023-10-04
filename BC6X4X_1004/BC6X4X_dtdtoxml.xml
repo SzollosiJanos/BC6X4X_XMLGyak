@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!DOCTYPE BSZKmodell SYSTEM "BC6X4X_ertodtd.dtd">
+<!DOCTYPE BC6X4X_modell SYSTEM "BC6X4X_ertodtd.dtd">
 
-<BSZKmodell>
+<BC6X4X_modell>
 
     <A Aa="Aa">
         <Ab>
@@ -30,4 +30,4 @@
         <A_Bc>A_Bc</A_Bc>
     </A_B>
 
-</BSZKmodell>
+</BC6X4X_modell>
