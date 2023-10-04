@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE BSZKmodell SYSTEM "BC6X4X_ertodtd.dtd">
+
+<BSZKmodell>
+
+    <A Aa="Aa">
+        <Ab>
+            <Abx>Abx</Abx>
+            <Aby>Aby</Aby>
+        </Ab>
+        <Ac>
+            <Acd>Acd</Acd>
+            <Ace>Ace</Ace>
+        </Ac>
+    </A>
+
+    <B Ba="Ba">
+        <Bb>
+            <Bbx>Bbx</Bbx>
+            <Bby>Bby</Bby>
+        </Bb>
+    </B>
+
+    <C Ca="Ca">
+        <Cb>Cb</Cb>
+    </C>
+
+    <A_B A_B_a="Aa" A_B_b="Ba">
+        <A_Bc>A_Bc</A_Bc>
+    </A_B>
+
+</BSZKmodell>
