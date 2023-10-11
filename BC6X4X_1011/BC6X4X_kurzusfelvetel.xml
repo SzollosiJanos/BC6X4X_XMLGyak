@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+<BC6X4X_kurzusfelvetel tanev="2023/2024 I." egyetem="ME" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="BC6X4X_kurzusfelvetel.xsd">
+
+    <hallgato id="BC6X4X">
+        <hnev>Szöllősi János</hnev>
+        <szulev>2002-05-24</szulev>
+        <szak evf="7">Programtervező informatikus</szak>
+    </hallgato>
+
+    <kurzusok>
+        <kurzus id="GEIAL322-B" nyelv="magyar"  jovahagyas="igen">
+            <kurzusnev>Adatkezelés XML-ben</kurzusnev>
+            <kredit>5</kredit>
+            <hely>XXXII A1 magasfsz</hely>
+            <idopont>Kedd 12:00-14:00</idopont>
+            <oktato>Dr. Bednarik László</oktato>
+            <oraado>Dr. Bednarik László</oraado>
+        </kurzus>
+    </kurzusok>
+</BC6X4X_kurzusfelvetel>
