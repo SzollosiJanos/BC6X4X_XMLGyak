@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:element name="Fesztivál_BC6X4X">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="fesztival" type="fesztivalTipus" maxOccurs="unbounded"/>
+                <xs:element name="tulajdonos" type="tulajdonosTipus" maxOccurs=1/>
+                <xs:element name="fellépő" type="fellépőTipus" maxOccurs="unbounded"/>
+                <xs:element name="résztvevő" type="résztvevőTipus" maxOccurs="unbounded"/>
+                <xs:element name="közvélemény" type="közvéleményTipus" maxOccurs="unbounded"/>
+                <xs:element name="nyelvtudás" type="nyelvtudásTipus" maxOccurs="unbounded"/>
+                <xs:element name="bár" type="bárTipus" maxOccurs="unbounded"/>
+                <xs:element name="alkalmazott" type="alkalmazottTipus" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+
+        <xs:key name="fesztival_kulcs">
+            <xs:selector xpath="fesztival"/>
+            <xs:field xpath="@FESZ_ID"/>
+        </xs:key>
+        <xs:key name="tulajdonos_kulcs">
+            <xs:selector xpath="tulajdonos"/>
+            <xs:field xpath="@T_ID"/>
+        </xs:key>
+        <xs:key name="fellépő_kulcs">
+            <xs:selector xpath="fellépő"/>
+            <xs:field xpath="@FEL_ID"/>
+        </xs:key>
+        <xs:key name="résztvevő_kulcs">
+            <xs:selector xpath="résztvevő"/>
+            <xs:field xpath="@R_ID"/>
+        </xs:key>
+        <xs:key name="alkalmazott_kulcs">
+            <xs:selector xpath="alkalmazott"/>
+            <xs:field xpath="@A_ID"/>
+        </xs:key>
+        <xs:key name="nyelvtudás_kulcs">
+            <xs:selector xpath="nyelvtudás"/>
+            <xs:field xpath="@NY_ID"/>
+        </xs:key>
+        <xs:key name="bár_kulcs">
+            <xs:selector xpath="bár"/>
+            <xs:field xpath="@B_ID"/>
+        </xs:key>
+
+
+        <xs:keyref refer="résztvevő_kulcs" name="résztvevő_idegen_kulcs">
+            <xs:selector xpath="közvélemény"/>
+            <xs:field xpath="@köz_resz"/>
+        </xs:keyref>
+
+        <xs:keyref refer="nyelvtudás_kulcs" name="nyelvtudás_idegen_kulcs">
+            <xs:selector xpath="közvélemény"/>
+            <xs:field xpath="@köz_nyel"/>
+        </xs:keyref>
+
+        <xs:keyref refer="fesztival_kulcs" name="fesztival_résztvevő_idegen_kulcs">
+            <xs:selector xpath="közvélemény"/>
+            <xs:field xpath="@FESZ_R"/>
+        </xs:keyref>
+
+        <xs:keyref refer="fesztival_kulcs" name="fesztival_tulajdonos_idegen_kulcs">
+            <xs:selector xpath="közvélemény"/>
+            <xs:field xpath="@FESZ_T"/>
+        </xs:keyref>
+
+        <xs:keyref refer="fesztival_kulcs" name="fesztival_fellépő_idegen_kulcs">
+            <xs:selector xpath="közvélemény"/>
+            <xs:field xpath="@FEL_FESZ"/>
+        </xs:keyref>
+
+
+        <xs:keyref refer="fesztival_kulcs" name="fesztival_bár_idegen_kulcs">
+            <xs:selector xpath="közvélemény"/>
+            <xs:field xpath="@FESZ_B"/>
+        </xs:keyref>
+
+        <xs:keyref refer="alkalmazott_kulcs" name="bár_idegen_kulcs">
+            <xs:selector xpath="közvélemény"/>
+            <xs:field xpath="@B_A"/>
+        </xs:keyref>
+
+    </xs:element>
+</xs:schema>

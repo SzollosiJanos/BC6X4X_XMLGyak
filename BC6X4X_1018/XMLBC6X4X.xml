@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Fesztivál_BC6X4X xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="XMLSchemaBC6X4X.xsd">
+    <fesztival FESZ_ID="fesz1">
+        <név>Sound</név>
+        <helyszín>Balaton</helyszín>
+        <év>2023</év>
+    </fesztival>
+
+
+
+    <tulajdonos T_ID="tul1" FESZ_T="fesz1">
+        <név>Kovács András</név>
+        <adószám>123456789</adószám>
+        <alapítás>2023.05.23</alapítás>
+        <bevétel>82.321.342$</bevétel>
+     </tulajdonos>
+    <fellépő FEL_ID="fel1" FEL_FESZ="fesz1">
+        <név>majka</név>
+        <ország>Magyarország</ország>
+        <díj>20.000$</díj>
+    </fellépő>
+    <fellépő FEL_ID="fel2" FESZ_FESZ="fesz1">
+        <név>belga</név>
+        <ország>Magyarország</ország>
+        <díj>5.000$</díj>
+    </fellépő>
+    <résztvevő R_ID="resz1"  FESZ_R="resz1">
+        <név>Szöllősi János</név>
+        <diákigazolvány>3474127334</diákigazolvány>
+        <lakcím>
+            <település>Miskolc</település>
+            <utca>Hősök</utca>
+            <házszám>69420</házszám>
+        </lakcím>
+    </résztvevő>
+    <résztvevő R_ID="resz2"  FESZ_R="resz1">
+        <név>Lakatos Emese</név>
+        <diákigazolvány>9557123733</diákigazolvány>
+        <lakcím>
+            <település>Ózd</település>
+            <utca>Kecske</utca>
+            <házszám>3</házszám>
+        </lakcím>
+    </résztvevő>
+
+    <közvélemény köz_resz="resz1" köz_nyel="nyel1" K_ID="köz1">
+        <kérdező>Antal Mária</kérdező>
+    </közvélemény>
+    <közvélemény köz_resz="resz2" köz_nyel="nyel2" K_ID="köz2">
+        <kérdező>Álmos Benedek</kérdező>
+    </közvélemény>
+
+    <nyelvtudás NY_ID="nyel1">
+        <nyelv>Magyar</nyelv>
+        <szint>Anyanyelvi</szint>
+    </nyelvtudás>
+    <nyelvtudás NY_ID="nyel2">
+        <nyelv>Angol</nyelv>
+        <szint>Középszint</szint>
+    </nyelvtudás>
+
+
+    <bár B_ID="bár1" FESZ_B="fesz1">
+        <név>Rockwell bár</név>
+        <cég>Rockwell</cég>
+        <ital>Vodka</ital>
+        <ital>Whiskey</ital>
+        <ital>Tatra tea</ital>
+        <ital>Red Bull</ital>
+    </bár>
+
+    <bár B_ID="bár2" FESZ_B="fesz1">
+        <név>Mambo</név>
+        <cég>Mambo kft</cég>
+        <ital>Hell</ital>
+        <ital>Whiskey</ital>
+        <ital>Coca Cola</ital>
+        <ital>Red Bull</ital>
+    </bár>
+    <alkalmazott A_ID="alk1" B_A="bár1">
+        <név>Hunkó Benedek</név>
+        <fizetés>15.000$</fizetés>
+        <műszak>A</műszak>
+        <műszak>B</műszak>
+    </alkalmazott>
+    <alkalmazott A_ID="alk2" B_A="bár2">
+        <név>Szabó Béla</név>
+        <fizetés>13.000$</fizetés>
+        <műszak>A</műszak>
+        <műszak>C</műszak>
+    </alkalmazott>
+</Fesztivál_BC6X4X>
