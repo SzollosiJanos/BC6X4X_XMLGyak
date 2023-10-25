@@ -3,15 +3,21 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import javax.xml.XMLConstants;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
+import javax.xml.transform.Source;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+import javax.xml.validation.Validator;
 
 import java.io.File;
 import java.io.IOException;
 public class SaxBC6X4X {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException, SAXException {
 		try{
             SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
             SAXParser saxParser = saxParserFactory.newSAXParser();
@@ -20,6 +26,29 @@ public class SaxBC6X4X {
         } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
         }
+		if(isValid("BC6X4X_kurzusfelvetel.xml","BC6X4X_kurzusfelvetel.xsd")){
+			System.out.println("XSD Validation successful");
+		}else{
+			System.out.println("Unsuccessful validation");
+		}
+		
+	}
+	private static Validator initValidator(String xsdPath) throws SAXException {
+	    SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+	    Source schemaFile = new StreamSource(xsdPath);
+	    Schema schema = factory.newSchema(schemaFile);
+	    return schema.newValidator();
+	}
+
+	
+	public static boolean isValid(String xmlName,String xsdname) throws IOException, SAXException {
+	    Validator validator = initValidator(xsdname);
+	    try {
+	        validator.validate(new StreamSource(xmlName));
+	        return true;
+	    } catch (SAXException e) {
+	        return false;
+	    }
 	}
 }
 
@@ -30,7 +59,6 @@ class SaxHandler extends DefaultHandler {
   private String formatAttributes(Attributes attributes) {
       int attrLength = attributes.getLength();
       if(attrLength == 0) return "";
-      
       StringBuilder sb = new StringBuilder();
       for (int i = 0; i < attrLength; i++) {
           sb.append(attributes.getLocalName(i) + "=" + attributes.getValue(i));
