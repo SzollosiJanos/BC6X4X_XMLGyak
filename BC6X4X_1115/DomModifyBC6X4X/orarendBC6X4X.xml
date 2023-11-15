@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<BC6X4X_orarend>
+	<ora id="1" tipus="eloadas">
+		<targy>Adatkezelés XML-ben</targy>
+		<idopont>
+			<nap>Kedd</nap>
+			<tol>12:00</tol>
+			<ig>14:00</ig>
+		</idopont>
+		<helyszin>XXXII A1 magasfsz</helyszin>
+		<oktato>Dr. Bednarik László</oktato>
+		<szak>Programtervező Informatikus</szak>
+	</ora>
+	<ora id="2" tipus="gyakorlat">
+		<targy>Adatkezelés XML-ben</targy>
+		<idopont>
+			<nap>Szerda</nap>
+			<tol>10:00</tol>
+			<ig>12:00</ig>
+		</idopont>
+		<helyszin>In/101 In I. e. 101</helyszin>
+		<oktato>Dr. Bednarik László</oktato>
+		<szak>Programtervező Informatikus</szak>
+	</ora>
+</BC6X4X_orarend>
