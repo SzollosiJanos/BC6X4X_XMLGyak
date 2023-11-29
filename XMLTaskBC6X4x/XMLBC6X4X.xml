@@ -68,9 +68,15 @@
     </telepules>
 
     <!-- Cég-Település kapcsolatok -->
-    <ceg_telepules cegREF="1" telepulesREF="1" />
-    <ceg_telepules cegREF="2" telepulesREF="2" />
-    <ceg_telepules cegREF="3" telepulesREF="3" />
+    <ceg_telepules cegREF="1" telepulesREF="1" >
+        <alkalmazottak>5000</alkalmazottak>
+    </ceg_telepules>
+    <ceg_telepules cegREF="2" telepulesREF="2" >
+        <alkalmazottak>4000</alkalmazottak>
+    </ceg_telepules>
+    <ceg_telepules cegREF="3" telepulesREF="3" >
+        <alkalmazottak>3000</alkalmazottak>
+    </ceg_telepules>
 
     <!-- Termékek -->
     <termek termekID="1">

@@ -17,6 +17,7 @@
 	<xs:element name="dolgozoNeve" type="xs:string" />
 	<xs:element name="munkakor" type="xs:string" />
 	<xs:element name="fizetes" type="xs:integer" />
+	<xs:element name="alkalmazottak" type="xs:integer" />
 
 
 	<xs:attribute name="cegID" type="xs:integer" />
@@ -164,6 +165,9 @@
 	</xs:complexType>
 
 	<xs:complexType name="ceg_telepules_type">
+		<xs:sequence>
+			<xs:element ref="alkalmazottak"/>
+		</xs:sequence>
 		<xs:attribute ref="cegREF" use="required"/>
 		<xs:attribute ref="telepulesREF" use="required"/>
 	</xs:complexType>
