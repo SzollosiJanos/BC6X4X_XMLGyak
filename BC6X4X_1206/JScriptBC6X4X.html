@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+<p>Órarend</p>
+<p id="targy"></p>
+<p id="helyszin"></p>
+<p id="oktato"></p>
+<p id="szak"></p>
+<script>
+const txt = '{"BC6X4X_orarend":{"ora":[{"@tipus":"eloadas","targy":"AdatkezelĂ©s XML-ben","oktato":"Dr. Bednarik LĂˇszlĂł","szak":"ProgramtervezĹ\u2018 Informatikus","idopont":{"tol":"12:00","nap":"Kedd","ig":"14:00"},"@id":"1","helyszin":"XXXII A1 magasfsz"},{"@tipus":"gyakorlat","targy":"AdatkezelĂ©s XML-ben","oktato":"Dr. Bednarik LĂˇszlĂł","szak":"ProgramtervezĹ\u2018 Informatikus","idopont":{"tol":"10:00","nap":"Szerda","ig":"12:00"},"@id":"2","helyszin":"In\/101 In I. e. 101"}]}}'
+const obj = JSON.parse(txt);
+console.log(obj);
+document.getElementById("targy").innerHTML = "Tárgy: "+obj.BC6X4X_orarend.ora[0].targy;
+document.getElementById("helyszin").innerHTML = "Helyszín: "+obj.BC6X4X_orarend.ora[0].helyszin;
+document.getElementById("oktato").innerHTML = "Oktató: "+obj.BC6X4X_orarend.ora[0].oktato;
+document.getElementById("szak").innerHTML = "Szak: "+obj.BC6X4X_orarend.ora[0].szak;
+</script>
+
+</body>
+</html>
