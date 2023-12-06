@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html>
+<body>
+	<table>			
+        <tr>
+            <th>targy</th>
+            <th>idopont</th>
+            <th>helyszin</th>
+            <th>oktato</th>
+            <th>szak</th>
+            <th>_id</th>
+            <th>_tipus</th>
+        </tr>			
+	<tr>
+		<td>Adatkezelés XML-ben</td>
+		<td>Kedd|12:00|14:00</td>
+		<td>XXXII A1 magasfsz</td>
+		<td>Dr. Bednarik László</td>
+		<td>Programtervező Informatikus</td>
+		<td>1</td>
+		<td>Eloadas</td>
+	</tr>
+	<tr>
+		<td>Adatkezelés XML-ben</td>
+		<td>Szerda|10:00|12:00</td>
+		<td>In/101 In I. e. 101</td>
+		<td>Dr. Bednarik László</td>
+		<td>Programtervező Informatikus</td>
+		<td>2</td>
+		<td>Gyakorlat</td>
+	</tr>
+    </table>
+</body>
+</html>
