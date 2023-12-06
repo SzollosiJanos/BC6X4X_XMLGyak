@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<gyartocegek xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="XMLSchemaBC6X4X.xsd">
-
+<?xml version="1.0" encoding="utf-8" standalone="no"?><gyartocegek xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="XMLSchemaBC6X4X.xsd">
+    <!-- Cégek -->
     <ceg cegID="1">
         <nev>ABC Zrt</nev>
         <tipus>Zrt</tipus>
@@ -9,12 +8,13 @@
             <honap>02</honap>
             <nap>15</nap>
         </alapitasIdeje>
-        <tulajdonosok>
+	<tulajdonosok>
             <tulajdonos>Kovács István</tulajdonos>
             <tulajdonos>Nagy Mária</tulajdonos>
             <tulajdonos>Szabó János</tulajdonos>
-        </tulajdonosok>
+	</tulajdonosok>
     </ceg>
+
     <ceg cegID="2">
         <nev>DEF Kft</nev>
         <tipus>Kft</tipus>
@@ -29,6 +29,7 @@
             <tulajdonos>Kovács Anikó</tulajdonos>
         </tulajdonosok>
     </ceg>
+
     <ceg cegID="3">
         <nev>GHI Bt</nev>
         <tipus>Bt</tipus>
@@ -43,24 +44,30 @@
             <tulajdonos>Kovács Bence</tulajdonos>
         </tulajdonosok>
     </ceg>
+
+    <!-- Települések -->
     <telepules telepulesID="1">
         <iranyitoszam>1098</iranyitoszam>
         <telepulesNeve>Pécs</telepulesNeve>
         <utca>Király utca</utca>
         <hazszam>25</hazszam>
     </telepules>
+
     <telepules telepulesID="2">
         <iranyitoszam>1024</iranyitoszam>
         <telepulesNeve>Budapest</telepulesNeve>
         <utca>Alkotás utca</utca>
         <hazszam>8</hazszam>
     </telepules>
+
     <telepules telepulesID="3">
         <iranyitoszam>3300</iranyitoszam>
         <telepulesNeve>Eger</telepulesNeve>
         <utca>Széchenyi utca</utca>
         <hazszam>12</hazszam>
     </telepules>
+
+    <!-- Cég-Település kapcsolatok -->
     <ceg_telepules cegREF="1" telepulesREF="1">
         <alkalmazottak>5000</alkalmazottak>
     </ceg_telepules>
@@ -70,6 +77,8 @@
     <ceg_telepules cegREF="3" telepulesREF="3">
         <alkalmazottak>3000</alkalmazottak>
     </ceg_telepules>
+
+    <!-- Termékek -->
     <termek termekID="1">
         <termekNeve>Laptop XYZ</termekNeve>
         <eladasiAr>1500</eladasiAr>
@@ -84,6 +93,7 @@
             <vevo>Nagy Balázs</vevo>
         </vevok>
     </termek>
+
     <termek termekID="2">
         <termekNeve>Smartphone Plus</termekNeve>
         <eladasiAr>800</eladasiAr>
@@ -98,6 +108,7 @@
             <vevo>Szabó Anna</vevo>
         </vevok>
     </termek>
+
     <termek termekID="3">
         <termekNeve>Asztali Számítógép Pro</termekNeve>
         <eladasiAr>2500</eladasiAr>
@@ -112,39 +123,49 @@
             <vevo>Szabó Eszter</vevo>
         </vevok>
     </termek>
+
+    <!-- Cég-Termék kapcsolatok -->
     <ceg_termek cegREF="1" termekREF="1"/>
     <ceg_termek cegREF="2" termekREF="2"/>
     <ceg_termek cegREF="3" termekREF="3"/>
+
+    <!-- Gyártási Információk -->
     <gyartasiInformacio gyartasiInformacioID="1" termekREF="1">
         <gyartasiKoltseg>800</gyartasiKoltseg>
         <gyartasiIdo>24</gyartasiIdo>
         <selejtekSzama>3%</selejtekSzama>
         <dolgozokSzama>25</dolgozokSzama>
     </gyartasiInformacio>
+
     <gyartasiInformacio gyartasiInformacioID="2" termekREF="2">
         <gyartasiKoltseg>400</gyartasiKoltseg>
         <gyartasiIdo>25</gyartasiIdo>
         <selejtekSzama>2%</selejtekSzama>
         <dolgozokSzama>15</dolgozokSzama>
     </gyartasiInformacio>
+
     <gyartasiInformacio gyartasiInformacioID="3" termekREF="3">
         <gyartasiKoltseg>1200</gyartasiKoltseg>
         <gyartasiIdo>26</gyartasiIdo>
         <selejtekSzama>1%</selejtekSzama>
         <dolgozokSzama>30</dolgozokSzama>
     </gyartasiInformacio>
+
+    <!-- Dolgozók -->
     <dolgozo cegREF="1" dolgozoID="1">
         <dolgozoNeve>Kis Anikó</dolgozoNeve>
         <belepesiDatum>2021-08-05</belepesiDatum>
         <munkakor>Rendszergazda</munkakor>
         <fizetes>3500</fizetes>
     </dolgozo>
+
     <dolgozo cegREF="2" dolgozoID="2">
         <dolgozoNeve>Nagy Gábor</dolgozoNeve>
         <belepesiDatum>2022-01-15</belepesiDatum>
         <munkakor>Programozó</munkakor>
         <fizetes>4200</fizetes>
     </dolgozo>
+
     <dolgozo cegREF="3" dolgozoID="3">
         <dolgozoNeve>Szabó Mónika</dolgozoNeve>
         <belepesiDatum>2023-05-20</belepesiDatum>

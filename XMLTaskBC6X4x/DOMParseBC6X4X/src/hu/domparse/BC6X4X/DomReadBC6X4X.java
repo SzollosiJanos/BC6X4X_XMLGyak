@@ -28,18 +28,20 @@ public class DomReadBC6X4X {
 	            
 	        } else {
 	        	doc.getDocumentElement().normalize();
-	            System.out.println("Root: " + doc.getDocumentElement().getNodeName());
+	        	System.out.println("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
+	            System.out.println("<" + doc.getDocumentElement().getNodeName()+" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"XMLSchemaBC6X4X.xsd\">");
 	        }
 
 	        NodeList nodeList = doc.getDocumentElement().getChildNodes();
 	        String indent = "";
 	        listData(nodeList, indent);
+	        System.out.println("</" + doc.getDocumentElement().getNodeName()+">");
 	        try {
 	            TransformerFactory transformerFactory = TransformerFactory.newInstance();
 	            Transformer transformer = transformerFactory.newTransformer();
-	            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+	            transformer.setOutputProperty(OutputKeys.INDENT, "no");
 	            
-	            transformer.transform(new DOMSource(doc), new StreamResult("XMLBC6X4X1.xml"));
+	            transformer.transform(new DOMSource(doc), new StreamResult("XMLBC6X4Xreadoutput.xml"));
 
 	        } catch (Exception e) {
 	            e.printStackTrace();
@@ -66,9 +68,20 @@ public class DomReadBC6X4X {
 	            for (int i = 0; i < nodeList.getLength(); i++) {
 	                Node node = nodeList.item(i);
 	                if (node.getNodeType() == Node.ELEMENT_NODE && !node.getTextContent().trim().isEmpty()) {
-	                    System.out.println(indent + "{" + node.getNodeName() + "}:");
+	                    System.out.print(indent + "<" + node.getNodeName());
+	                    if (node.hasAttributes()) {
+	                        for (int k = 0; k < node.getAttributes().getLength(); k++) {
+	                            Node attribute = node.getAttributes().item(k);
+	                            System.out.print(" "+attribute.getNodeName()+"=\""+attribute.getNodeValue()+"\"");
+	                        }
+	                        System.out.println(">");
+	                    }else {
+	                    	System.out.println(">");
+	                    }
+	                    	
 	                    NodeList nodeList_new = node.getChildNodes();
 	                    listData(nodeList_new, indent);
+	                    System.out.println(indent + "</" + node.getNodeName() + ">");
 	                } else if (node instanceof Text){
 	                    String value = node.getNodeValue().trim();
 	                    if (value.isEmpty()){

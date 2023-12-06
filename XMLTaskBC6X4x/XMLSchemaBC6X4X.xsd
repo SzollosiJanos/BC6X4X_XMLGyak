@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<!-- Elemek, tulajdonságok -->
+	<xs:element name="nev" type="xs:string" />
+	<xs:element name="vevo" type="xs:string" />
+	<xs:element name="alkatresz" type="xs:string" />
+	<xs:element name="tipus" type="xs:string" />
+	<xs:element name="telepulesNeve" type="xs:string" />
+	<xs:element name="utca" type="xs:string" />
+	<xs:element name="hazszam" type="xs:integer" />
+	<xs:element name="termekNeve" type="xs:string" />
+	<xs:element name="eladasiAr" type="xs:integer" />
+	<xs:element name="gyartasiIdo" type="xs:integer" />
+	<xs:element name="gyartasiKoltseg" type="xs:integer" />
+	<xs:element name="dolgozokSzama" type="xs:integer" />
+	<xs:element name="dolgozoNeve" type="xs:string" />
+	<xs:element name="munkakor" type="xs:string" />
+	<xs:element name="fizetes" type="xs:integer" />
+	<xs:element name="alkalmazottak" type="xs:integer" />
+
+
+	<xs:attribute name="cegID" type="xs:integer" />
+	<xs:attribute name="cegREF" type="xs:integer" />
+	<xs:attribute name="telepulesID" type="xs:integer" />
+	<xs:attribute name="telepulesREF" type="xs:integer" />
+	<xs:attribute name="termekID" type="xs:integer" />
+	<xs:attribute name="termekREF" type="xs:integer" />
+	<xs:attribute name="gyartasiInformacioID" type="xs:integer" />
+	<xs:attribute name="dolgozoID" type="xs:integer" />
+
+	<!-- Egyszerű típusok -->
+	<xs:simpleType name="evTipus">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="(19|20)\d+\d+"></xs:pattern>
+		</xs:restriction>
+    	</xs:simpleType>
+
+	<xs:simpleType name="honapTipus">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="(0[1-9]|1[012])"></xs:pattern>
+		</xs:restriction>
+    	</xs:simpleType>
+
+	<xs:simpleType name="napTipus">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="(0[1-9]|[12][0-9]|3[01])"></xs:pattern>
+		</xs:restriction>
+    	</xs:simpleType>
+
+	<xs:simpleType name="datumTipus">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="(19|20)\d\d-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])"></xs:pattern>
+		</xs:restriction>
+    	</xs:simpleType>
+
+	<xs:simpleType name="iranyitoszamTipus">
+		<xs:restriction base="xs:string">
+			<xs:length value="4" />
+			<xs:pattern value="([0-9])*" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="nevTipus">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="(\D*\s+\D+)(\D*\s*)" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="selejtekSzamaTipus">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="(\d*%)"></xs:pattern>
+		</xs:restriction>
+    	</xs:simpleType>
+
+	<!-- Komplex típusok -->
+
+
+
+
+	<xs:complexType name="alapitasIdejeTipus">
+		<xs:sequence>
+			<xs:element name="ev" type="evTipus"/>
+			<xs:element name="honap" type="honapTipus"/>
+			<xs:element name="nap" type="napTipus"/>
+		</xs:sequence>
+	</xs:complexType>
+
+
+	<xs:complexType name="tulajdonosokTipus">
+		<xs:sequence>
+			<xs:element name="tulajdonos" type="nevTipus"  maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="alkatreszekTipus">
+		<xs:sequence>
+			<xs:element ref="alkatresz"  maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="vevokTipus">
+		<xs:sequence>
+			<xs:element ref="vevo"  maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+
+	<xs:complexType name="cegTipus">
+		<xs:sequence>
+			<xs:element name="nev" type="nevTipus"/>
+			<xs:element ref="tipus"/>
+			<xs:element name="alapitasIdeje" type="alapitasIdejeTipus"/>
+			<xs:element name="tulajdonosok" type="tulajdonosokTipus"/>
+		</xs:sequence>
+		<xs:attribute ref="cegID" use="required"/>
+	</xs:complexType>
+
+	<xs:complexType name="telepulesTipus">
+		<xs:sequence>
+			<xs:element name="iranyitoszam" type="iranyitoszamTipus"/>
+			<xs:element ref="telepulesNeve"/>
+			<xs:element ref="utca"/>
+			<xs:element ref="hazszam"/>
+		</xs:sequence>
+		<xs:attribute ref="telepulesID" use="required"/>
+	</xs:complexType>
+
+	<xs:complexType name="termekTipus">
+		<xs:sequence>
+			<xs:element ref="termekNeve"/>
+			<xs:element ref="eladasiAr"/>
+			<xs:element name="alkatreszek" type="alkatreszekTipus"/>
+			<xs:element name="vevok" type="vevokTipus"/>
+		</xs:sequence>
+		<xs:attribute ref="termekID" use="required"/>
+	</xs:complexType>
+
+	<xs:complexType name="gyartasiInformacioTipus">
+		<xs:sequence>
+			<xs:element ref="gyartasiKoltseg"/>
+			<xs:element ref="gyartasiIdo"/>
+			<xs:element name="selejtekSzama" type="selejtekSzamaTipus"/>
+			<xs:element ref="dolgozokSzama"/>
+		</xs:sequence>
+		<xs:attribute ref="gyartasiInformacioID" use="required"/>
+		<xs:attribute ref="termekREF" use="required"/>
+	</xs:complexType>
+
+	<xs:complexType name="dolgozoTipus">
+		<xs:sequence>
+			<xs:element name="dolgozoNeve" type="nevTipus"/>
+			<xs:element name="belepesiDatum" type="datumTipus"/>
+			<xs:element ref="munkakor"/>
+			<xs:element ref="fizetes"/>
+		</xs:sequence>
+		<xs:attribute ref="dolgozoID" use="required"/>
+		<xs:attribute ref="cegREF" use="required"/>
+	</xs:complexType>
+
+	<!-- Kapcsolótáblák -->
+	<xs:complexType name="ceg_termekTipus">
+		<xs:attribute ref="cegREF" use="required"/>
+		<xs:attribute ref="termekREF" use="required"/>
+	</xs:complexType>
+
+	<xs:complexType name="ceg_telepulesTipus">
+		<xs:sequence>
+			<xs:element ref="alkalmazottak"/>
+		</xs:sequence>
+		<xs:attribute ref="cegREF" use="required"/>
+		<xs:attribute ref="telepulesREF" use="required"/>
+	</xs:complexType>
+
+	<!-- Gyartócégek -->
+
+	<xs:element name="gyartocegek">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ceg" type="cegTipus" maxOccurs="unbounded"/>
+				<xs:element name="telepules" type="telepulesTipus" maxOccurs="unbounded"/>
+				<xs:element name="ceg_telepules" type="ceg_telepulesTipus" maxOccurs="unbounded"/>
+				<xs:element name="termek" type="termekTipus" maxOccurs="unbounded"/>
+				<xs:element name="ceg_termek" type="ceg_termekTipus" maxOccurs="unbounded"/>
+				<xs:element name="gyartasiInformacio" type="gyartasiInformacioTipus" maxOccurs="unbounded"/>
+				<xs:element name="dolgozo" type="dolgozoTipus" maxOccurs="unbounded"/>
+
+			</xs:sequence>
+		</xs:complexType>
+
+	<!-- Kulcsok -->
+
+        <xs:unique name="cegID">
+            <xs:selector xpath="ceg"/>
+            <xs:field xpath="@cegID"/>
+        </xs:unique>
+
+        <xs:unique name="telepulesID">
+            <xs:selector xpath="telepules"/>
+            <xs:field xpath="@telepulesID"/>
+        </xs:unique>
+
+        <xs:unique name="termekID">
+            <xs:selector xpath="termek"/>
+            <xs:field xpath="@termekID"/>
+        </xs:unique>
+
+        <xs:unique name="gyartasiInformacioID">
+            <xs:selector xpath="gyartasiInformacio"/>
+            <xs:field xpath="@gyartasiInformacioID"/>
+        </xs:unique>
+
+        <xs:unique name="dolgozoID">
+            <xs:selector xpath="dolgozo"/>
+            <xs:field xpath="@dolgozoID"/>
+        </xs:unique>
+	
+	<!-- Kulcshivatkozások (idegen kulcsok) -->
+
+	<xs:keyref name="ceg_FK1" refer="cegID">
+		<xs:selector xpath="dolgozo"></xs:selector>
+		<xs:field xpath="@cegREF"></xs:field>
+	</xs:keyref>
+
+	<xs:keyref name="termek_FK1" refer="termekID">
+		<xs:selector xpath="gyartasiInformacio"></xs:selector>
+		<xs:field xpath="@termekREF"></xs:field>
+	</xs:keyref>
+
+	</xs:element>
+</xs:schema>

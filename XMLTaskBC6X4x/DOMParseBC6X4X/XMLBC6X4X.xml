@@ -1,4 +1,6 @@
-<gyartocegek>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+
+<gyartocegek xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="XMLSchemaBC6X4X.xsd">
     <!-- Cégek -->
     <ceg cegID="1">
         <nev>ABC Zrt</nev>
