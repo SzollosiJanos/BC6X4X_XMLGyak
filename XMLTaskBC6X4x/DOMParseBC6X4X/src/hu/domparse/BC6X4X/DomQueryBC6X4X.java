@@ -9,6 +9,12 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
 import java.io.File;
 import java.io.IOException;
 public class DomQueryBC6X4X {
@@ -26,7 +32,7 @@ public class DomQueryBC6X4X {
            System.out.println("Root: " + doc.getDocumentElement().getNodeName());
        }
         
-       //Kiírja azokat a cégeket, amelyeket 2017 előtt alapítottak
+       //KiĂ­rja azokat a cĂ©geket, amelyeket 2017 elĹ‘tt alapĂ­tottak
         NodeList alapitas = doc.getDocumentElement().getElementsByTagName("ceg");
         for (int i = 0; i < alapitas.getLength(); i++) {
             NodeList query = alapitas.item(i).getChildNodes();
@@ -47,7 +53,7 @@ public class DomQueryBC6X4X {
         System.out.println("-------------------------------------------------------------");
 
         
-        //Termékek kiírsa, ahol az eladási ár több, mint 1000$
+        //TermĂ©kek kiĂ­rsa, ahol az eladĂˇsi Ăˇr tĂ¶bb, mint 1000$
         NodeList termek = doc.getDocumentElement().getElementsByTagName("termek");
         for (int i = 0; i < termek.getLength(); i++) {
             NodeList query = termek.item(i).getChildNodes();
@@ -61,19 +67,19 @@ public class DomQueryBC6X4X {
         System.out.println("-------------------------------------------------------------");
 
         
-        //Programozó dolgozók adatainak kiírása
+        //ProgramozĂł dolgozĂłk adatainak kiĂ­rĂˇsa
         NodeList programozok = doc.getDocumentElement().getElementsByTagName("dolgozo");
         for (int i = 0; i < programozok.getLength(); i++) {
             NodeList query = programozok.item(i).getChildNodes();
             for (int j = 0; j < query.getLength(); j++) {
-                if (query.item(j).getNodeName().equals("munkakor") && query.item(j).getTextContent().equals("Programozó")){
+                if (query.item(j).getNodeName().equals("munkakor") && query.item(j).getTextContent().equals("ProgramozĂł")){
                     listData(programozok.item(i).getChildNodes(), "");
                 }
             }
         }
         
         System.out.println("-------------------------------------------------------------");
-        //Kiírja azoknak a termékeknek az adatait, amik pontosan 3 alkatrésszel rendelkeznek
+        //KiĂ­rja azoknak a termĂ©keknek az adatait, amik pontosan 3 alkatrĂ©sszel rendelkeznek
         NodeList termekek = doc.getDocumentElement().getElementsByTagName("termek");
         for (int i = 0; i < termekek.getLength(); i++) {
             NodeList query = termekek.item(i).getChildNodes();
@@ -88,7 +94,7 @@ public class DomQueryBC6X4X {
             }
         
         System.out.println("-------------------------------------------------------------");
-        //Kiírja azokat a dolgozókat, akiknek a fizetőse osztható 3-al
+        //KiĂ­rja azokat a dolgozĂłkat, akiknek a fizetĹ‘se oszthatĂł 3-al
         NodeList dolgozok = doc.getDocumentElement().getElementsByTagName("dolgozo");
         for (int i = 0; i < dolgozok.getLength(); i++) {
             NodeList query = dolgozok.item(i).getChildNodes();
@@ -99,7 +105,16 @@ public class DomQueryBC6X4X {
             }
         }
         
+        try {
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            
+            transformer.transform(new DOMSource(doc), new StreamResult("XMLBC6X4XQUARY.xml"));
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static Document introduceFile(File xmlFile){

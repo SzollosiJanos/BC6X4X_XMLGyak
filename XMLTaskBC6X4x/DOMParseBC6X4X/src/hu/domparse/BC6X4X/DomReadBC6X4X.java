@@ -9,6 +9,11 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.io.IOException;
 public class DomReadBC6X4X {
@@ -29,6 +34,16 @@ public class DomReadBC6X4X {
 	        NodeList nodeList = doc.getDocumentElement().getChildNodes();
 	        String indent = "";
 	        listData(nodeList, indent);
+	        try {
+	            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+	            Transformer transformer = transformerFactory.newTransformer();
+	            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+	            
+	            transformer.transform(new DOMSource(doc), new StreamResult("XMLBC6X4X1.xml"));
+
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
 	    }
 
 	    public static Document introduceFile(File xmlFile){

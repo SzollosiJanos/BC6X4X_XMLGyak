@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<gyartocegek>
+    <!-- Cégek -->
+    <ceg cegID="1">
+        <nev>ABC Zrt</nev>
+        <tipus>Zrt</tipus>
+        <alapitasIdeje>
+            <ev>2000</ev>
+            <honap>02</honap>
+            <nap>15</nap>
+        </alapitasIdeje>
+	<tulajdonosok>
+            <tulajdonos>Kovács István</tulajdonos>
+            <tulajdonos>Nagy Mária</tulajdonos>
+            <tulajdonos>Szabó János</tulajdonos>
+	<tulajdonos>SzĂ¶llĹ‘si JĂˇnos</tulajdonos>
+</tulajdonosok>
+    </ceg>
+
+    <ceg cegID="2">
+        <nev>DEF Kft</nev>
+        <tipus>Kft</tipus>
+        <alapitasIdeje>
+            <ev>2005</ev>
+            <honap>06</honap>
+            <nap>10</nap>
+        </alapitasIdeje>
+        <tulajdonosok>
+            <tulajdonos>Kiss Andrea</tulajdonos>
+            <tulajdonos>Nagy Gábor</tulajdonos>
+            <tulajdonos>Kovács Anikó</tulajdonos>
+        <tulajdonos>SzĂ¶llĹ‘si JĂˇnos</tulajdonos>
+</tulajdonosok>
+    </ceg>
+
+    <ceg cegID="3">
+        <nev>GHI Bt</nev>
+        <tipus>Bt</tipus>
+        <alapitasIdeje>
+            <ev>2008</ev>
+            <honap>11</honap>
+            <nap>25</nap>
+        </alapitasIdeje>
+        <tulajdonosok>
+            <tulajdonos>Nagy Péter</tulajdonos>
+            <tulajdonos>Kiss Judit</tulajdonos>
+            <tulajdonos>Kovács Bence</tulajdonos>
+        <tulajdonos>SzĂ¶llĹ‘si JĂˇnos</tulajdonos>
+</tulajdonosok>
+    </ceg>
+
+    <!-- Települések -->
+    <telepules telepulesID="1">
+        <iranyitoszam>1098</iranyitoszam>
+        <telepulesNeve>Pécs</telepulesNeve>
+        <utca>Király utca</utca>
+        <hazszam>25</hazszam>
+    </telepules>
+
+    <telepules telepulesID="2">
+        <iranyitoszam>1024</iranyitoszam>
+        <telepulesNeve>Budapest</telepulesNeve>
+        <utca>Alkotás utca</utca>
+        <hazszam>8</hazszam>
+    </telepules>
+
+    <telepules telepulesID="3">
+        <iranyitoszam>3300</iranyitoszam>
+        <telepulesNeve>Eger</telepulesNeve>
+        <utca>Széchenyi utca</utca>
+        <hazszam>12</hazszam>
+    </telepules>
+
+    <!-- Cég-Település kapcsolatok -->
+    <ceg_telepules cegREF="1" telepulesREF="1">
+        <alkalmazottak>5000</alkalmazottak>
+    </ceg_telepules>
+    <ceg_telepules cegREF="2" telepulesREF="2">
+        <alkalmazottak>4000</alkalmazottak>
+    </ceg_telepules>
+    <ceg_telepules cegREF="3" telepulesREF="3">
+        <alkalmazottak>3000</alkalmazottak>
+    </ceg_telepules>
+
+    <!-- Termékek -->
+    <termek termekID="1">
+        <termekNeve>Laptop XYZ</termekNeve>
+        <eladasiAr>1700</eladasiAr>
+        <alkatreszek>
+            <alkatresz>Memória</alkatresz>
+            <alkatresz>Processzor</alkatresz>
+            <alkatresz>Tárhely</alkatresz>
+        </alkatreszek>
+        <vevok>
+            <vevo>Andrásné</vevo>
+            <vevo>Kiss Géza</vevo>
+            <vevo>Nagy Balázs</vevo>
+        </vevok>
+    </termek>
+
+    <termek termekID="2">
+        <termekNeve>Smartphone Plus</termekNeve>
+        <eladasiAr>1000</eladasiAr>
+        <alkatreszek>
+            <alkatresz>Kijelző</alkatresz>
+            <alkatresz>Akku</alkatresz>
+            <alkatresz>Kamera</alkatresz>
+        </alkatreszek>
+        <vevok>
+            <vevo>Nagy Katalin</vevo>
+            <vevo>Kiss József</vevo>
+            <vevo>Szabó Anna</vevo>
+        </vevok>
+    </termek>
+
+    <termek termekID="3">
+        <termekNeve>Asztali Számítógép Pro</termekNeve>
+        <eladasiAr>2700</eladasiAr>
+        <alkatreszek>
+            <alkatresz>Processzor</alkatresz>
+            <alkatresz>RAM</alkatresz>
+            <alkatresz>GPU</alkatresz>
+        </alkatreszek>
+        <vevok>
+            <vevo>Kiss Péter</vevo>
+            <vevo>Nagy Zoltán</vevo>
+            <vevo>Szabó Eszter</vevo>
+        </vevok>
+    </termek>
+
+    <!-- Cég-Termék kapcsolatok -->
+    <ceg_termek cegREF="1" termekREF="1"/>
+    <ceg_termek cegREF="2" termekREF="2"/>
+    <ceg_termek cegREF="3" termekREF="3"/>
+
+    <!-- Gyártási Információk -->
+    <gyartasiInformacio gyartasiInformacioID="1" termekREF="1">
+        <gyartasiKoltseg>800</gyartasiKoltseg>
+        <gyartasiIdo>24</gyartasiIdo>
+        <selejtekSzama>3%</selejtekSzama>
+        <dolgozokSzama>25</dolgozokSzama>
+    </gyartasiInformacio>
+
+    <gyartasiInformacio gyartasiInformacioID="2" termekREF="2">
+        <gyartasiKoltseg>400</gyartasiKoltseg>
+        <gyartasiIdo>25</gyartasiIdo>
+        <selejtekSzama>2%</selejtekSzama>
+        <dolgozokSzama>15</dolgozokSzama>
+    </gyartasiInformacio>
+
+    <gyartasiInformacio gyartasiInformacioID="3" termekREF="3">
+        <gyartasiKoltseg>1200</gyartasiKoltseg>
+        <gyartasiIdo>26</gyartasiIdo>
+        <selejtekSzama>1%</selejtekSzama>
+        <dolgozokSzama>30</dolgozokSzama>
+    </gyartasiInformacio>
+
+    <!-- Dolgozók -->
+    <dolgozo cegREF="1" dolgozoID="1">
+        <dolgozoNeve>Kis Anikó</dolgozoNeve>
+        <belepesiDatum>2021-08-05</belepesiDatum>
+        <munkakor>Ă–sszeszerelĹ‘</munkakor>
+        <fizetes>7000</fizetes>
+    </dolgozo>
+
+    <dolgozo cegREF="2" dolgozoID="2">
+        <dolgozoNeve>Nagy Gábor</dolgozoNeve>
+        <belepesiDatum>2022-01-15</belepesiDatum>
+        <munkakor>Ă–sszeszerelĹ‘</munkakor>
+        <fizetes>8400</fizetes>
+    </dolgozo>
+
+    <dolgozo cegREF="3" dolgozoID="3">
+        <dolgozoNeve>Szabó Mónika</dolgozoNeve>
+        <belepesiDatum>2023-05-20</belepesiDatum>
+        <munkakor>Ă–sszeszerelĹ‘</munkakor>
+        <fizetes>7600</fizetes>
+    </dolgozo>
+</gyartocegek>

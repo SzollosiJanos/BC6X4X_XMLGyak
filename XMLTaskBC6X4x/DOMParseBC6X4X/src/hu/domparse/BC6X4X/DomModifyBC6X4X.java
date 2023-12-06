@@ -6,6 +6,11 @@ import java.io.IOException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
@@ -24,7 +29,7 @@ public class DomModifyBC6X4X {
            System.out.println("Root: " + doc.getDocumentElement().getNodeName());
        }
 
-        //Cég alapítás évének csökkentése 10 évvel
+        //CĂ©g alapĂ­tĂˇs Ă©vĂ©nek csĂ¶kkentĂ©se 10 Ă©vvel
         NodeList evek = doc.getDocumentElement().getElementsByTagName("ev");
         for (int i = 0; i < evek.getLength(); i++) {
             evek.item(i).setTextContent(Integer.toString(Integer.parseInt(evek.item(i).getTextContent())-10));
@@ -38,7 +43,7 @@ public class DomModifyBC6X4X {
 
         System.out.println("-------------------------------------------------------------");
 
-        //Dolgozók fizetésének növelése a duplájára
+        //DolgozĂłk fizetĂ©sĂ©nek nĂ¶velĂ©se a duplĂˇjĂˇra
         NodeList dolgozok = doc.getDocumentElement().getElementsByTagName("fizetes");
         for (int i = 0; i < dolgozok.getLength(); i++) {
             dolgozok.item(i).setTextContent(Integer.toString(Integer.parseInt(dolgozok.item(i).getTextContent())*2));
@@ -51,7 +56,7 @@ public class DomModifyBC6X4X {
 
         System.out.println("-------------------------------------------------------------");
 
-        //Termékek eladási árának növelése 200-al
+        //TermĂ©kek eladĂˇsi ĂˇrĂˇnak nĂ¶velĂ©se 200-al
         NodeList termekek = doc.getDocumentElement().getElementsByTagName("eladasiAr");
         for (int i = 0; i < termekek.getLength(); i++) {
             termekek.item(i).setTextContent(Integer.toString(Integer.parseInt(termekek.item(i).getTextContent())+200));
@@ -64,10 +69,10 @@ public class DomModifyBC6X4X {
 
         System.out.println("-------------------------------------------------------------");
 
-        //Dolgozók munkakörének módosítása összeszerelőre
+        //DolgozĂłk munkakĂ¶rĂ©nek mĂłdosĂ­tĂˇsa Ă¶sszeszerelĹ‘re
         NodeList munkakorok = doc.getDocumentElement().getElementsByTagName("munkakor");
         for (int i = 0; i < munkakorok.getLength(); i++) {
-        	munkakorok.item(i).setTextContent("Összeszerelő");
+        	munkakorok.item(i).setTextContent("Ă–sszeszerelĹ‘");
         }
 
         munkakorok = doc.getDocumentElement().getElementsByTagName("dolgozo");
@@ -77,18 +82,27 @@ public class DomModifyBC6X4X {
 
         System.out.println("-------------------------------------------------------------");
 
-        //Minden cég tulajdonosához hozzáadom a saját nevemet
+        //Minden cĂ©g tulajdonosĂˇhoz hozzĂˇadom a sajĂˇt nevemet
         NodeList tulajdonosok = doc.getDocumentElement().getElementsByTagName("tulajdonosok");
         for (int i = 0; i < tulajdonosok.getLength(); i++) {
         	Node newNode = tulajdonosok.item(i).appendChild(doc.createElement("tulajdonos"));
-        	newNode.setTextContent("Szöllősi János");
+        	newNode.setTextContent("SzĂ¶llĹ‘si JĂˇnos");
         }
 
         tulajdonosok = doc.getDocumentElement().getElementsByTagName("ceg");
         for (int i = 0; i < tulajdonosok.getLength(); i++) {
             listData(tulajdonosok.item(i).getChildNodes(), "");
         }
+        try {
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            
+            transformer.transform(new DOMSource(doc), new StreamResult("XMLBC6X4XModified.xml"));
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static Document introduceFile(File xmlFile){
