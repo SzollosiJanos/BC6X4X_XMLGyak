@@ -1,31 +1,31 @@
 {
-  "BC6X4X_orarend":{
-    "ora":[
+  "BC6X4X_orarend": {
+    "ora": [
       {
-        "@id": "1",
-        "@tipus": "eloadas",
-        "targy": "Adatkezelés XML-ben",
+        "@tipus": 1,
+        "targy": "AdatkezelésXML-ben",
+        "oktato": "Dr.BednarikLászló",
+        "szak": "ProgramtervezőInformatikus",
         "idopont": {
+          "tol": "12: 00",
           "nap": "Kedd",
-          "tol": "12:00",
-          "ig": "14:00"
+          "ig": "14: 00"
         },
-        "helyszin": "XXXII A1 magasfsz",
-        "oktato": "Dr. Bednarik László",
-        "szak": "Programtervező Informatikus"
+        "@id": 1,
+        "helyszin": "XXXIIA1magasfsz"
       },
       {
-        "@id": "2",
-        "@tipus": "gyakorlat",
-        "targy": "Adatkezelés XML-ben",
+        "@tipus": 2,
+        "targy": "AdatkezelésXML-ben",
+        "oktato": "Dr.BednarikLászló",
+        "szak": "ProgramtervezőInformatikus",
         "idopont": {
+          "tol": "10: 00",
           "nap": "Szerda",
-          "tol": "10:00",
-          "ig": "12:00"
+          "ig": "12: 00"
         },
-        "helyszin": "In/101 In I. e. 101",
-        "oktato": "Dr. Bednarik László",
-        "szak": "Programtervező Informatikus"
+        "@id": 1,
+        "helyszin": "In\/101InI.e.101"
       }
     ]
   }
