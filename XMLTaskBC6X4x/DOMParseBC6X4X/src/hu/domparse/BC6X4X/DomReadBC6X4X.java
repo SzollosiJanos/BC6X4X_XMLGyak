@@ -74,14 +74,25 @@ public class DomReadBC6X4X {
 	                            Node attribute = node.getAttributes().item(k);
 	                            System.out.print(" "+attribute.getNodeName()+"=\""+attribute.getNodeValue()+"\"");
 	                        }
-	                        System.out.println(">");
+	                        System.out.print(">");
 	                    }else {
-	                    	System.out.println(">");
+	                    	System.out.print(">");
 	                    }
 	                    	
 	                    NodeList nodeList_new = node.getChildNodes();
-	                    listData(nodeList_new, indent);
-	                    System.out.println(indent + "</" + node.getNodeName() + ">");
+	                    if(node.getChildNodes().getLength()==1 && nodeList_new.item(0).getNodeType()!=Node.ELEMENT_NODE) {
+	                    	String value = nodeList_new.item(0).getNodeValue().trim();
+		                    if (value.isEmpty()){
+		                        continue;
+		                    }
+		                    System.out.print(nodeList_new.item(0).getTextContent());
+		                    System.out.println("</" + node.getNodeName() + ">");
+	                    }else {
+	                    	System.out.print("\n");
+	                    	listData(nodeList_new, indent);
+	                    	 System.out.println(indent+"</" + node.getNodeName() + ">");
+	                    }
+	                   
 	                } else if (node instanceof Text){
 	                    String value = node.getNodeValue().trim();
 	                    if (value.isEmpty()){

@@ -214,14 +214,25 @@ public class DomWriteBC6X4X {
 	                            Node attribute = node.getAttributes().item(k);
 	                            System.out.print(" "+attribute.getNodeName()+"=\""+attribute.getNodeValue()+"\"");
 	                        }
-	                        System.out.println(">");
+	                        System.out.print(">");
 	                    }else {
-	                    	System.out.println(">");
+	                    	System.out.print(">");
 	                    }
 	                    	
 	                    NodeList nodeList_new = node.getChildNodes();
-	                    listData(nodeList_new, indent);
-	                    System.out.println(indent + "</" + node.getNodeName() + ">");
+	                    if(node.getChildNodes().getLength()==1 && nodeList_new.item(0).getNodeType()!=Node.ELEMENT_NODE) {
+	                    	String value = nodeList_new.item(0).getNodeValue().trim();
+		                    if (value.isEmpty()){
+		                        continue;
+		                    }
+		                    System.out.print(nodeList_new.item(0).getTextContent());
+		                    System.out.println("</" + node.getNodeName() + ">");
+	                    }else {
+	                    	System.out.print("\n");
+	                    	listData(nodeList_new, indent);
+	                    	 System.out.println(indent+"</" + node.getNodeName() + ">");
+	                    }
+	                   
 	                } else if (node instanceof Text){
 	                    String value = node.getNodeValue().trim();
 	                    if (value.isEmpty()){
@@ -235,15 +246,12 @@ public class DomWriteBC6X4X {
 	 
 	 private static void printDocument(Document document) {
 	        try {
-	            File xmlFile = new File("XMLBC6X4X1.xml");
-	            
-	            FileWriter writer =new FileWriter(xmlFile, false);
 
 	            System.out.print("<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"no\"?>\n");
-	            writer.write("<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"no\"?>\n");
+
 	            
 	            System.out.print("<gyartocegek xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"XMLSchemaBC6X4X.xsd\">\n");
-	            writer.write("<gyartocegek xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"XMLSchemaBC6X4X.xsd\">\n");
+
 	            
 	            NodeList nodeList = document.getDocumentElement().getChildNodes();
 	            listData(nodeList, "");
@@ -253,14 +261,14 @@ public class DomWriteBC6X4X {
 		            Transformer transformer = transformerFactory.newTransformer();
 		            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 		            
-		            transformer.transform(new DOMSource(document), new StreamResult("XMLBC6X4X1.xml"));
+		            transformer.transform(new DOMSource(document), new StreamResult("XMLBC6X4X2.xml"));
 
 		        } catch (Exception e) {
 		            e.printStackTrace();
 		        }
 	            
 	            System.out.print("</gyartocegek>");
-	            writer.close();
+
 	        } catch (Exception e) {
 	            e.printStackTrace();
 	        }

@@ -190,30 +190,30 @@
 
 	<!-- Kulcsok -->
 
-        <xs:unique name="cegID">
+        <xs:key name="cegID">
             <xs:selector xpath="ceg"/>
             <xs:field xpath="@cegID"/>
-        </xs:unique>
+        </xs:key>
 
-        <xs:unique name="telepulesID">
+        <xs:key name="telepulesID">
             <xs:selector xpath="telepules"/>
             <xs:field xpath="@telepulesID"/>
-        </xs:unique>
+        </xs:key>
 
-        <xs:unique name="termekID">
+        <xs:key name="termekID">
             <xs:selector xpath="termek"/>
             <xs:field xpath="@termekID"/>
-        </xs:unique>
+        </xs:key>
 
         <xs:unique name="gyartasiInformacioID">
             <xs:selector xpath="gyartasiInformacio"/>
             <xs:field xpath="@gyartasiInformacioID"/>
         </xs:unique>
 
-        <xs:unique name="dolgozoID">
+        <xs:key name="dolgozoID">
             <xs:selector xpath="dolgozo"/>
             <xs:field xpath="@dolgozoID"/>
-        </xs:unique>
+        </xs:key>
 	
 	<!-- Kulcshivatkozások (idegen kulcsok) -->
 
@@ -224,6 +224,27 @@
 
 	<xs:keyref name="termek_FK1" refer="termekID">
 		<xs:selector xpath="gyartasiInformacio"></xs:selector>
+		<xs:field xpath="@termekREF"></xs:field>
+	</xs:keyref>
+
+	<xs:keyref name="ceg_FK2" refer="cegID">
+		<xs:selector xpath="ceg_telepules"></xs:selector>
+		<xs:field xpath="@cegREF"></xs:field>
+	</xs:keyref>
+
+	<xs:keyref name="telepules_FK2" refer="telepulesID">
+		<xs:selector xpath="ceg_telepules"></xs:selector>
+		<xs:field xpath="@telepulesREF"></xs:field>
+	</xs:keyref>
+
+
+	<xs:keyref name="ceg_FK3" refer="cegID">
+		<xs:selector xpath="ceg_termek"></xs:selector>
+		<xs:field xpath="@cegREF"></xs:field>
+	</xs:keyref>
+
+	<xs:keyref name="termek_FK3" refer="termekID">
+		<xs:selector xpath="ceg_termek"></xs:selector>
 		<xs:field xpath="@termekREF"></xs:field>
 	</xs:keyref>
 
